@@ -1,15 +1,15 @@
-FROM python:3.8-alpine3.12
+FROM python:3.11-alpine3.19
 
 # update apk repo
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.12/main" >> /etc/apk/repositories && \
-    echo "http://dl-4.alpinelinux.org/alpine/v3.12/community" >> /etc/apk/repositories
+RUN echo "http://dl-4.alpinelinux.org/alpine/v3.19/main" >> /etc/apk/repositories && \
+    echo "http://dl-4.alpinelinux.org/alpine/v3.19/community" >> /etc/apk/repositories
 
 # install chromedriver
 RUN apk update
 RUN apk add chromium chromium-chromedriver
 
 # install selenium
-RUN pip install selenium==3.13.0
+RUN pip install selenium # ==3.13.0
 
 # install pandas
 RUN apk add make automake gcc g++ subversion git python3-dev	
@@ -20,7 +20,7 @@ RUN pip install pandas --upgrade
 RUN pip install civis
 
 # install google cloud storage
-RUN pip install google-cloud-storage==1.29.0
+RUN pip install google-cloud-storage # ==1.29.0
 
 # install Pillow requirements
 RUN apk add build-base py-pip jpeg-dev zlib-dev
